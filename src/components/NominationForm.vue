@@ -109,7 +109,7 @@ export default {
 				nominatedByFName: "",
 				nominatedByLName: "",
 			},
-			submitted: false,
+			submitted: true,
 			errors: [],
 			traits: this.$store.getters["traits/allTraits"],
 		};
