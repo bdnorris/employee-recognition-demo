@@ -1,0 +1,42 @@
+.video-lockup {
+	display: flex;
+	gap: 2em;
+	align-items: center;
+	flex-direction: column;
+	margin-left: -#{$mobile-margin};
+	margin-right: -#{$mobile-margin};
+	margin-bottom: 3em;
+	h3 {
+		margin: 0;
+		color: $brown;
+	}
+	p {
+		margin-top: 0.333em;
+	}	
+	& > div:last-child {
+		flex: 1 1 auto;
+		width: 100%;
+		iframe {
+			aspect-ratio: 16 / 9;
+			width: 100%;
+			height: auto;
+		}
+	}
+	& > div:first-child {
+		padding-left: $mobile-margin;
+		padding-right: $mobile-margin;
+		text-align: center;
+	}
+	@include breakpoint(large) {
+		margin: 0 0 3em 0;
+		flex-direction: row-reverse;
+		& > div:last-child {
+			flex: 0 0 44%;
+		}
+		& > div:first-child {
+			padding-left: 0;
+			padding-right: 0;
+			text-align: left;
+		}
+	}
+}

@@ -1,0 +1,317 @@
+$navigation-mobile-height: 87px;
+$navigation-height: 104px;
+
+.navigation-border {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 8px;
+	background-color: $primary;
+	flex: none;
+}
+
+.navigation {
+	// & > nav:first-child {
+	height: $navigation-mobile-height;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 1em;
+	background-color: #f5f5f5;
+	& > div {
+		height: $navigation-mobile-height;
+		flex: 1 0 $navigation-mobile-height;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	// }
+	nav {
+		display: none;
+		flex-direction: column;
+		&.active {
+			display: flex;
+			background-color: $lgreen;
+			position: relative;
+			z-index: 4;
+			width: 100vw;
+		}
+	}
+	@include breakpoint(large) {
+		// & > nav:first-child {
+		flex-direction: row;
+		// }
+		nav {
+			display: flex;
+			flex-direction: row;
+			&.active {
+				background-color: transparent;
+				z-index: default;
+				width: auto;
+			}
+		}
+	}
+	@include breakpoint(large) {
+		height: $navigation-height;
+		& > div {
+			flex: 0 1 218px;
+		}
+	}
+}
+
+.navigation__mobile-toggle {
+	display: block;
+	svg {
+		line,
+		g {
+			transition: transform 0.3s ease-in-out;
+		}
+		[data-id="meat"] {
+			transform-origin: 38% -4%;
+		}
+		[data-id="cheese"] {
+			transform-origin: 38% 6%;
+		}
+	}
+	&.active {
+		svg {
+			.moveout.right {
+				transform: translateX(100px);
+			}
+			.moveout.left {
+				transform: translateX(-100px);
+			}
+			.rotate.left line {
+				transform: rotate(45deg);
+			}
+			.rotate.right line {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	@include breakpoint(large) {
+		display: none;
+	}
+}
+
+.navigation__group {
+	position: relative;
+	padding-bottom: 1em;
+	z-index: map-get($z, 3);
+	& > button {
+		font-family: $display;
+		padding: 0 0.25em;
+		font-size: 2.1875rem;
+		width: 100%;
+		text-align: center;
+		transition: background-color 100ms ease-in-out;
+		height: 80px;
+		color: $primary;
+		line-height: 1;
+		// position: relative;
+		span {
+			position: relative;
+			top: 0.05em;
+			color: white;
+			span {
+				position: relative;
+				z-index: 2;
+			}
+			svg {
+				opacity: 0;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 1;
+				width: 100%;
+				height: auto;
+				fill: white;
+			}
+		}
+		&.active {
+			svg {
+				opacity: 1;
+			}
+		}
+		&.open,
+		&:hover,
+		&:focus {
+			background-color: $lgreen;
+			color: white;
+			span {
+				color: white;
+			}
+			&.active {
+				svg {
+					path {
+						fill: white;
+					}
+				}
+			}
+		}
+		@include breakpoint(large) {
+			font-size: 1.875rem;
+			height: $navigation-height;
+			position: relative;
+			&::before {
+				content: "";
+				display: block;
+				width: 9.74px;
+				height: 19.49px;
+				background-image: svg-uri($right-nav-chevron);
+				background-size: contain;
+				background-position: center center;
+				background-repeat: no-repeat;
+				// background-color: pink;
+				position: absolute;
+				left: 0.333em;
+				top: calc(50% - 0.75rem);
+			}
+			span {
+				color: $primary;
+			}
+			&.open,
+			&:hover,
+			&:focus {
+				&::before {
+					background-image: svg-uri($right-nav-chevron--white);
+				}
+			}
+		}
+	}
+	& > ul {
+		// opacity: 0;
+		// pointer-events: none;
+		transition: opacity 100ms ease-in-out;
+		background-color: $lgreen;
+		width: 100%;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin-left: auto;
+		& > li {
+			width: 100%;
+			& > a {
+				display: block;
+				padding: 0.666em 1.5em;
+				color: white;
+				width: 100%;
+				font-size: 0.875em;
+				font-weight: 500;
+				// text-align: center;
+				span {
+					margin-left: 0.25em;
+				}
+				&:hover {
+					background-color: $green;
+					color: white;
+				}
+				svg {
+					opacity: 0;
+				}
+				&.router-link-active {
+					svg {
+						opacity: 1;
+					}
+				}
+			}
+			&:last-child {
+				&::after {
+					display: none;
+				}
+			}
+		}
+		@include breakpoint(large) {
+			position: absolute;
+			top: 6em;
+			left: 0;
+			& > li {
+				& > a {
+					text-align: left;
+					font-size: 1em;
+				}
+				&::after {
+					content: "";
+					display: block;
+					width: 82%;
+					margin: 0 auto;
+					height: 1px;
+					background-color: $gray;
+				}
+			}
+		}
+	}
+	&:last-child {
+		&::before {
+			content: "";
+			display: block;
+			width: 82%;
+			margin: 0 auto;
+			height: 1px;
+			background-color: $gray;
+		}
+	}
+	@include breakpoint(large) {
+		width: 240px;
+		padding-bottom: 0;
+		&:first-child {
+			position: relative;
+			& > button > span > span {
+				position: relative;
+				left: -0.2em;
+			}
+			&::after {
+				content: "";
+				display: block;
+				width: 1px;
+				height: 4em;
+				background-color: $secondary;
+				position: absolute;
+				right: -1px;
+				top: 1.25em;
+			}
+		}
+		&:last-child {
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
+// .nav-group__screen {
+// 	position: fixed;
+// 	width: 100%;
+// 	height: 100%;
+// 	background-color: transparent;
+// 	top: 0;
+// 	right: 0;
+// 	bottom: 0;
+// 	left: 0;
+// 	z-index: 1;
+// 	opacity: 0;
+// 	pointer-events: none;
+// 	&.active {
+// 		opacity: 1;
+// 		pointer-events: all;
+// 	}
+// }
+
+.navigation__logo {
+	padding: 0.5em 0;
+	margin-right: 1em;
+	max-width: 163.5px;
+	svg {
+		width: 100%;
+		height: auto;
+	}
+	@include breakpoint(large) {
+		max-width: 218px;
+	}
+}

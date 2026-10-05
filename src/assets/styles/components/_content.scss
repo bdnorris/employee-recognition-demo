@@ -1,0 +1,70 @@
+// * Could be used for layout styles
+
+article,
+section.container {
+	@include default-sizing($xlarge);
+	padding-top: 1em;
+	padding-bottom: 4rem;
+	// overflow-y: hidden;
+	@include breakpoint(large) {
+		padding-top: 2em;
+		padding-bottom: 4rem;
+	}
+}
+section.container--wide {
+	@include default-sizing($xxlarge);
+}
+section.container--wider {
+	@include default-sizing($xxxlarge);
+}
+
+.body--better_way {
+	background-image: linear-gradient(rgba(76, 51, 39, 0.25) 0%, rgba(76, 51, 39, 0) 482px),
+		url("/backgrounds/stucco.jpg");
+	background-size: 100% 482px, 1500px 1500px;
+	background-repeat: no-repeat, repeat;
+}
+
+.body--growing_better {
+	background-image: linear-gradient(rgba(40, 161, 159, 0.25) 0%, rgba(40, 161, 159, 0) 482px),
+		url("/backgrounds/watercolor_1.jpg");
+	background-size: 100% 482px, 960px 1500px;
+	background-repeat: no-repeat, repeat;
+	// .standard-header {
+	// 	h1 {
+	// 		color: $text;
+	// 	}
+	// 	svg {
+	// 		path {
+	// 			fill: $text;
+	// 		}
+	// 	}
+	// }
+}
+
+.body--tree {
+	.container {
+		padding-bottom: 0;
+	}
+	@include breakpoint(xlarge) {
+		background-image: url('/backgrounds/large-dark-green-brush-texture.jpg'), linear-gradient(rgba(40, 161, 159, 0.25) 0%, rgba(40, 161, 159, 0) 482px),
+		url("/backgrounds/watercolor_1.jpg");
+	background-size: cover, 100% 482px, 960px 1500px;
+	background-repeat: no-repeat, no-repeat, repeat;
+		background-position: 0 49em, center top, center top;
+		.container {
+			padding-bottom: 4em;
+		}
+		.standard-header {
+			display: none;
+		}
+	}
+}
+
+.columns {
+	@include breakpoint(xlarge) {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		grid-gap: 4em;
+	}
+}

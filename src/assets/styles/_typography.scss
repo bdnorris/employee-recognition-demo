@@ -1,0 +1,160 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primary;
+}
+
+// Scale based on Jason Pamental's
+// http://typecast.com/blog/a-more-modern-scale-for-web-typography
+
+h1,
+.h1 {
+  font-family: $serif;
+  font-weight: 700;
+  line-height: 1.125;
+  font-size: em(25);
+  @include breakpoint(large) {
+    font-size: em(42);
+  }
+}
+
+h2,
+.h2 {
+  font-family: $display;
+  font-weight: normal;
+  line-height: 1;
+  font-size: em(30);
+  @include breakpoint(large) {
+    font-size: em(50);
+  }
+}
+
+h3,
+.h3 {
+  font-family: $sans;
+  font-weight: 700;
+  line-height: 1.0666;
+  font-size: em(25);
+  @include breakpoint(large) {
+    font-size: em(21);
+  }
+}
+
+// h4, .h4 {
+//	 font-family: $sans;
+//	 font-weight: 700;
+//	 line-height: 1.111;
+//	 letter-spacing: 0.25px;
+//	 font-size: em(18);
+//	 color: $text-light;
+//	 @include breakpoint(large) {
+//		 font-size: em(18);
+//		 line-height: 1.222;
+//	 }
+// }
+
+a {
+  color: $brown;
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 1.125em;
+  line-height: 1.666;
+}
+
+a.link--arrow {
+  // display: flex;
+  display: block;
+  // justify-content: center;
+  position: relative;
+  // margin-left: 1.5em;
+  font-size: 0.75em;
+  &::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0.25em;
+    // left: 0.25em;
+    height: 1.25em;
+    width: 1em;
+    background-image: svg-uri($chevron-right);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform $default-timing ease;
+    transform: translateX(0);
+  }
+  &:hover {
+    &::before {
+      transform: translateX(0.125em);
+    }
+  }
+  @include breakpoint(large) {
+    font-size: 1em;
+    // margin-left: 1em;
+  }
+}
+
+p,
+.p {
+  font-family: $serif;
+  font-weight: 500;
+  color: $text;
+  line-height: 1.666;
+  font-size: em(16);
+  max-width: 55em;
+  @include breakpoint(large) {
+    font-size: em(21);
+  }
+}
+
+p.p--sans {
+  font-family: $sans;
+  font-size: em(14);
+  @include breakpoint(large) {
+    font-size: em(16);
+  }
+}
+
+sup {
+  font-size: 50%;
+  vertical-align: middle;
+}
+
+// utility
+.display {
+  font-family: $display;
+}
+
+span.bottom-brush {
+  display: inline-block;
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    width: calc(72px / 1.2);
+    height: calc(4.735px / 1.2);
+    position: absolute;
+    bottom: 0.075em;
+    left: -0.25em;
+    right: 0;
+    background-image: svg-uri($brush-underline);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  @include breakpoint(large) {
+    &::after {
+      width: calc(144px / 1.4);
+      height: calc(9.47px / 1.4);
+      left: -0.25em;
+      right: 0;
+    }
+  }
+}
+
+span.bottom-brush--scoot {
+  &::after {
+    left: 0.125em;
+  }
+}

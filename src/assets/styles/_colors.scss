@@ -1,0 +1,24 @@
+$green: #325D30;
+$lgreen: #8FB229;
+$teal: #00857F;
+$red: #A1321F;
+$brown: #4C3327;
+$lbrown: #674738;
+$lrust: #C39682;
+
+$black: #0E1111;
+$dgray: #232828;
+$gray: #707070;
+$lgray: #9EAFB2;
+$llgray: #eff3f3;
+
+/* aliases */
+$text: $brown;
+$text-light: $green;
+$error: $red;
+$error-light: lighten($error, 20%);
+$primary: $green;
+$secondary: $lgreen;
+$clickable: $teal;
+$clickable-hover: lighten($clickable, 20%);
+$clickable-light: lighten($clickable, 10%);

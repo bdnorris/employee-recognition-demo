@@ -1,0 +1,40 @@
+ul.breadcrumb {
+	list-style: none;
+	padding: 1em;
+	margin: 0;
+	display: flex;
+	& > li {
+		margin: 0 0.666em 0 0;
+		& > a {
+			font-family: $sans;
+			font-weight: 400;
+			font-size: 0.75em;
+			text-align: left;
+			color: $brown;
+			text-transform: uppercase;
+			&::after {
+				content: ">";
+				display: inline-block;
+				position: relative;
+				right: -0.5em;
+			}
+		}
+		&:last-child {
+			& > a {
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+[aria-label="footer navigation to next item"] ul.breadcrumb {
+	padding-top: 3rem;
+	& > li.breadcrumb-item {
+		& > a {
+			font-size: 1em;
+			font-weight: 600;
+		}
+	}
+}

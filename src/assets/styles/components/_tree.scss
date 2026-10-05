@@ -1,0 +1,130 @@
+.tree {
+	@include breakpoint(xlarge) {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+}
+
+.tree__filter-and-list {
+	background-image: url('/backgrounds/large-dark-green-brush-texture.jpg');
+	background-size: 100vw auto;
+	background-repeat: repeat-y;
+	background-position: center 40vw;
+	margin: -3em -1em 0 -1em;
+	padding: 4em 1em 8em 1em;
+	flex: 0 0 40%;
+	@include breakpoint(large) {
+		margin: -3em -2em 0 -2em;
+		.traitwheel--mobile {
+			display: block;
+		}
+	}
+	@include breakpoint(xlarge) {
+		.traitwheel--mobile {
+			display: none;
+		}
+		background-image: none;
+	}
+}
+
+.tree__filter-and-list-wrapper {
+	background-color: rgba(white, 1);
+	border-radius: 25px;
+	.traitwheel--mobile {
+		background-color: transparent;
+	}
+	@include breakpoint(xlarge) {
+		background-color: rgba(white, 1);
+		padding: 1.5em $desktop-margin;
+		border-radius: 0;
+	}
+}
+
+.tree__tree {
+	overflow-x: hidden;
+	@include breakpoint(xlarge) {
+		overflow-x: visible;
+		display: flex;
+		flex-direction: column;
+		// justify-content: flex-end;
+	}
+}
+
+.the-tree {
+	pointer-events: none;
+	& > svg {
+		position: relative;
+		right: -7vw;
+		width: 100%;
+		height: auto;
+	}
+	@include breakpoint(xlarge) {
+		pointer-events: all;
+		position: relative;
+		z-index: map-get($z, 2);
+		svg {
+			width: 125%;
+			height: auto;
+			position: relative;
+			// left: 6em;
+			right: -1vw;
+		}
+	}
+} 
+
+.tree-message__mobile {
+	display: block;
+	@include breakpoint(xlarge) {
+		display: none;
+	}
+}
+
+.tree-message__desktop {
+	display: none;
+	@include breakpoint(xlarge) {
+		display: block;
+	}
+}
+
+// .ground {
+// 	display: none;
+// 	@include breakpoint(xlarge) {
+// 		display: block;
+// 		position: absolute;
+// 		// bottom: 0;
+// 		top: 45vw;
+// 		left: 0;
+// 		right: 0;
+// 		height: 65vw;
+// 		z-index: map-get($z, 1);
+// 		background-image: url('/backgrounds/large-dark-green-brush-texture.jpg');
+// 		background-size: cover;
+// 		background-repeat: repeat-y;
+// 		background-position: center 40vw;
+// 	}
+// }
+
+.tree__desktop-header {
+	display: none;
+	@include breakpoint(xlarge) {
+		display: flex;
+		flex-direction: column;
+		h1 {
+			font-size: em(34);
+			margin-top: 0.125em;
+			margin-bottom: 0.125em;
+		}
+		p {
+			color: $primary;
+			margin-top: 0.25em;
+		}
+		svg {
+			align-self: center;
+			width: 52.79px;
+			height: auto;
+			path {
+				fill: $secondary;
+			}
+		}
+	}
+}

@@ -1,0 +1,332 @@
+// * forms and form input styling
+
+$input-padding: 0.5em 0.8em;
+
+.form-field {
+  position: relative;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='number'],
+input[type='search'],
+input[type='password'],
+textarea {
+  width: 100%;
+  font-family: $sans;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1;
+  text-align: left;
+  color: $clickable;
+  padding: $input-padding;
+  border: 2px solid $clickable;
+  border-radius: 0;
+  margin-bottom: 1.5em;
+  -webkit-appearance: none;
+  &:focus {
+    // background-color: lightyellow;
+    outline: 2px solid $clickable;
+  }
+  & + .error-message {
+    opacity: 0;
+    color: $error;
+    font-size: em(12);
+    position: absolute;
+    top: 5.25em;
+    left: 0;
+    transition: opacity $default-timing ease;
+  }
+  &.js-error {
+    background-color: $error-light;
+    border-color: $error;
+    & + .error-message {
+      // display: block;
+      opacity: 1;
+    }
+  }
+}
+textarea {
+  & + .error-message {
+    bottom: 1.25em;
+    top: auto;
+  }
+}
+input[type='search'] {
+  padding-top: em(6);
+  padding-bottom: em(6);
+  line-height: 1;
+}
+
+label, legend {
+  display: block;
+  font-family: $sans;
+  font-weight: 700;
+  font-size: em(18);
+  line-height: 1.333;
+  color: $primary;
+  margin: 0 0 0.125em 0;
+  &.label--hidden {
+    @include visually-hidden;
+  }
+  &.label--large {
+    font-weight: 700;
+    font-size: em(15);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    text-align: left;
+    margin: 0 0 0.25em 0;
+  }
+}
+legend {
+  font-size: em(16);
+  margin-bottom: 0.5em;
+}
+
+.formkit-messages {
+	margin: -1em;
+	margin-bottom: 1.5em;
+	color: $error;
+}
+
+
+// select styling
+// https://codepen.io/bdnorris/pen/BMorpx
+// https://www.filamentgroup.com/lab/select-css.html
+
+select {
+  display: block;
+  font-family: $sans;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.3;
+  color: $clickable;
+  padding: $input-padding;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 2em 0;
+  border: 2px solid $clickable;
+  box-shadow: none;
+  border-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: svg-uri($triangle),
+    linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 13px auto, 100%;
+}
+.select-css::-ms-expand {
+  display: none;
+}
+.select-css:hover {
+  border-color: #888;
+}
+.select-css:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px $clickable-light;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+.select-css option {
+  font-weight: normal;
+}
+
+
+// Number Fields
+
+input[type='number'] {
+    appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.form__number {
+  position: relative;
+  width: 5.6875em;
+  input {
+    width: 5.6875em;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+
+
+.form__number-label {
+  @include visually-hidden;
+}
+.form__number--minus, 
+.form__number--plus {
+  position: absolute;
+  // width: 10.66px;
+  height: 10.66px;
+  padding: 0 0.666em;
+  background-size: contain;
+  background-position: center center;
+  // background-color: pink;
+  background-repeat: no-repeat;
+  background-size: 10.666px 10.666px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  span {
+    @include visually-hidden;
+  }
+}
+.form__number--minus {
+  left: 0;
+  background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" width="15.08" height="15.08" viewBox="0 0 15.08 15.08"><path id="Path_52796" data-name="Path 52796" d="M-3.956-16.8l-2.172,2.172L2.364-6.137,4.535-8.308Z" transform="translate(16.212 15.086) rotate(-45)"/></svg>');
+}
+.form__number--plus {
+  right: 0;
+  background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" width="15.08" height="15.08" viewBox="0 0 15.08 15.08"><path id="Path_52795" data-name="Path 52795" d="M-.783-13.626-3.956-16.8l-2.172,2.172,3.174,3.174L-6.128-8.308l2.172,2.172L-.783-9.283,2.364-6.137,4.535-8.308,1.389-11.455l3.146-3.174L2.364-16.8Z" transform="translate(16.212 15.086) rotate(-45)"/></svg>');
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 2em 0;
+}
+
+.form__date {
+  display: flex;
+  align-items: center;
+  span {
+    font-weight: 700;
+  }
+  input {
+    width: em(75);
+    text-align: center;
+    &:first-of-type {
+      margin-right: 0.5em;
+    }
+    &:last-of-type {
+      margin-left: 0.5em;
+    }
+  }
+}
+.form__date-label {
+  @include visually-hidden;
+}
+
+.form__inline, .form__search {
+  display: flex;
+  align-items: stretch;
+  & > input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    flex: 1 1 auto;
+  }
+  & > button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    flex: 1 1 40%;
+  }
+  @include breakpoint(large) {
+    & > button {
+      flex: 0 1 33.333%;
+    }
+  }
+}
+
+input[type="checkbox"] {
+  @include visually-hidden;
+  & + label {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    display: flex;
+    max-width: 66ch;
+    &::before {
+      content: '';
+      display: block;
+      flex: 0 0 em(25);
+      width: em(25);
+      height: em(25);
+      background-color: $clickable-light;
+      border: 1px solid $clickable;
+      vertical-align: middle;
+      margin-right: 0.5em;
+      position: relative;
+      top: -2px;
+      transition: background-color $default-timing ease;
+    }
+  }
+  &:checked {
+    & + label {
+      &::before {
+        background-color: $clickable;
+        background-image: svg-uri($check);
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+    }
+  }
+  &:disabled {
+    & + label {
+      color: $dgray;
+      &::before {
+        background-color: $gray;
+        border-color: $dgray;
+      }
+    }
+  }
+}
+
+.form__radio-set {
+
+}
+input[type="radio"] {
+  @include visually-hidden;
+  & + label {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: em(26);
+      height: em(26);
+      background-color: $clickable-light;
+      border: 1px solid $clickable;
+      border-radius: em(13);
+      vertical-align: middle;
+      margin-right: 0.333em;
+      position: relative;
+      top: -1px;
+    }
+  }
+  &:checked {
+    & + label {
+      &::before {
+        // background-color: $clickable;
+        background-image: svg-uri($circle);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: em(20) em(20);
+      }
+    }
+  }
+}
+
+// https://css-tricks.com/snippets/css/form-validation-styling-on-input-focus/
+/* Only show invalid ring while not focused */
+input:not(:focus):not(:placeholder-shown):invalid {
+  border-color: $error;
+  background-color: $error-light;
+}
+input:not(:focus):not(:placeholder-shown):invalid ~ .error-message {
+  display: block;	
+}
+
+/* Only show valid ring while not focused and if a value is entered */
+/* :empty won't work here as that targets elements that have no childeren. Therefore we abuse :placeholder-shown */
+input:not(:focus):not(:placeholder-shown):valid {
+  border-color: $clickable;
+}

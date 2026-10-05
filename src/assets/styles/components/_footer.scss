@@ -1,0 +1,27 @@
+footer {
+	position: sticky;
+  top: 100vh;
+	padding: 0.5rem 1em;
+	background: #fafafa;
+	text-align: center;
+	background-color: $brown;
+	border-top: 18px solid $lbrown;
+	// position: fixed;
+	// bottom: 0;
+	// left: 0;
+	// right: 0;
+	// z-index: 999;
+	p {
+		color: white;
+		max-width: 100%;
+		font-family: $sans;
+		font-weight: 500; // book
+		font-size: 12px;
+	}
+	@include breakpoint(large) {
+		padding: 1rem;
+		p {
+			font-size: 15px;
+		}
+	}
+}

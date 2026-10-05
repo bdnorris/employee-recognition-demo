@@ -1,0 +1,27 @@
+.note {
+	display: flex;
+	flex-direction: column;
+	gap: 3em;
+	padding: 3em 3em;
+	margin-bottom: 5em;
+	text-align: center;
+	@include breakpoint(large) {
+		padding: 5em 10em;
+		text-align: left;
+		
+		flex-direction: row;
+	}
+}
+
+.note__content {
+	h2 {
+		margin: 0;
+	}
+}
+
+.note__image {
+	display: none;
+	@include breakpoint(large) {
+		display: block;
+	}
+}

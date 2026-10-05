@@ -1,0 +1,13 @@
+.standard-box {
+	border-radius: $border-radius;
+	background: rgba($brown, 0.1);
+	padding: $mobile-margin;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	@include breakpoint(large) {
+		padding: $desktop-margin;
+		padding-bottom: $desktop-margin - 1em;
+	}
+}
